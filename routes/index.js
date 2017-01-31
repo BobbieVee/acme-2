@@ -14,8 +14,7 @@ router.get('/products', (req, res, next) => {
 });
 
 router.post('/products', (req, res, next) => {
-	const product = req.body.product;
-	products.add(product);
+	products.add(req.body.product);
 	res.redirect('/products');
 });
 
@@ -24,19 +23,19 @@ router.get('/products/add',(req, res, next) => {
 });
 
 router.get('/products/:id/edit', (req, res, next) => {
-	const id = req.params.id;
-	res.render('edit', {id: id})
+	const product = products.getById(req.params.id*1);
+	console.log('product = ', product)
+	res.render('edit', {id: product.id, product: product.product});
 });
 
 router.put('/products/:id/', (req, res, next) => {
-	const id = req.params.id;
-	const product = req.body.product;
-		console.log('put for product, id = ', product, id)
-	products.edit(product,id);
-
+	products.edit(req.body.product,req.params.id*1);
 	res.redirect('/products'); 
 });
 
-
+router.delete('/products/:id', (req, res, next) => {
+	products.delete(req.params.id*1);
+	res.redirect('/products');
+});
 
 module.exports = router;

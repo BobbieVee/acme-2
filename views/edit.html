@@ -4,10 +4,8 @@
 <form method='post' action='/products/{{id}}?_method=PUT'>
 	<div class='form-group'>
 		<label>Product Name</label>
-		<input  name="product" class='form-control'>		
+		<input  name="product" class='form-control' value='{{product}}'>		
 	</div>
-		<button class='btn btn-danger' >Update</button>
+	<button class='btn btn-danger' >Update</button>
 </form>
-
-
 {% endblock %}
