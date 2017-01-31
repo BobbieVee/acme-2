@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<form method='post' action='/products/{{id}}?_method=PUT'>
+	<div class='form-group'>
+		<label>Product Name</label>
+		<input  name="product" class='form-control'>		
+	</div>
+		<button class='btn btn-danger' >Update</button>
+</form>
+
+
+{% endblock %}

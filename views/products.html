@@ -1,5 +1,16 @@
 {% extends 'layout.html'%}
 
 {% block content %}
-	products
+	<p>
+		<a href="/products/add" class='btn btn-primary'>Add Product</a>
+
+	</p>
+	<ul class='list-group'>
+	{% for product in products%}
+		<li class='list-group-item'>{{product.product}}
+		<a href="/products/{{product.id}}/edit" class='btn btn-default pull-right'>Edit</a>	
+		<br clear='both'>
+		</li> 
+	{% endfor %}
+	</ul>
 {% endblock%}

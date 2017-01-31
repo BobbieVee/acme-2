@@ -6,6 +6,7 @@ const volleyball = require('volleyball');
 
 const noCache = process.env.NOCACHE;
 const port = process.env.PORT;
+const routes = require('./routes')
 
 app = express();
 app.use(volleyball);
@@ -14,13 +15,7 @@ app.set('view engine', 'html');
 app.engine('html', nunjucks.render);
 nunjucks.configure('views', {noCache: noCache})
 
-app.get('/', (req,res,next) => {
-	res.render('index');
-});
-
-app.get('/products', (req, res, next) => {
-	res.render('products');
-})
+app.use('/', routes);
 
 
 
