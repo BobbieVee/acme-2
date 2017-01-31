@@ -6,11 +6,11 @@ const methodOverride = require('method-override');
 router.use(bodyParser.urlencoded({extended: false}));
 router.use(methodOverride('_method'));
 router.get('/', (req,res,next) => {
-	res.render('index');
+	res.render('index', {homeClass: "active"});
 });
 
 router.get('/products', (req, res, next) => {
-	res.render('products', {products: products.get()});
+	res.render('products', {products: products.get(), productClass: "active"});
 });
 
 router.post('/products', (req, res, next) => {
@@ -19,13 +19,13 @@ router.post('/products', (req, res, next) => {
 });
 
 router.get('/products/add',(req, res, next) => {
-	res.render('add');
+	res.render('add', {productClass: "active"});
 });
 
 router.get('/products/:id/edit', (req, res, next) => {
 	const product = products.getById(req.params.id*1);
 	console.log('product = ', product)
-	res.render('edit', {id: product.id, product: product.product});
+	res.render('edit', {id: product.id, product: product.product, productClass: "active"});
 });
 
 router.put('/products/:id/', (req, res, next) => {
